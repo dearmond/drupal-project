@@ -1,7 +1,7 @@
 {
     "name": "internal/upstream-configuration",
     "type": "project",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "repositories": [
         {
             "type": "composer",
@@ -12,7 +12,7 @@
         "php": ">=7.0.8",
         "composer/installers": "^1.0.20",
         "drupal/core-composer-scaffold": "^8.8.1",
-        "drupal/core-recommended": "^8.8",
+        "drupal/core-recommended": "^8.8.5",
         "pantheon-systems/drupal-integrations": "^8",
         "pantheon-systems/quicksilver-pushback": "^2",
         "drush/drush": "~8.3",
@@ -22,7 +22,9 @@
         "drupal/config_installer": "^1.0",
         "drush-ops/behat-drush-endpoint": "^9.3",
         "rvtraveller/qs-composer-installer": "^1.1",
-        "zaporylie/composer-drupal-optimizations": "^1.0"
+        "zaporylie/composer-drupal-optimizations": "^1.0",
+        "drupal/token": "^1.6",
+        "drupal/webform": "^5.9"
     },
     "require-dev": {
         "behat/behat": "3.*",
@@ -40,5 +42,18 @@
         "phpunit/phpunit": "^6.5",
         "squizlabs/php_codesniffer": "^3.4.0",
         "symfony/css-selector": "^2.8"
+    },
+    "extra": {
+        "patches": {
+            "drupal/core": {
+                "Negate the condition on block visibility for Roles": "https://www.drupal.org/files/issues/2018-07-19/enable-block-visibility-user-role-negation-2986958-2.patch",
+                "Correct the RSS views field link": "https://www.drupal.org/files/issues/2019-01-18/2673980-85.full_.patch",
+                "multiple image upload dimension fix": "https://www.drupal.org/files/issues/2644468-88.patch",
+                "Drupalimage calling drupallink functions without checking if the plugin is loaded #27": "https://www.drupal.org/files/issues/2018-09-11/edit_drupalimage-86x-2855521-27.patch"
+            },
+            "drupal/token": {
+                "Token module custom menu_link base field breaks JSON API": "https://www.drupal.org/files/issues/2018-06-20/token-empty-menu-link-base-field-2978262-29.patch"
+            }
+        }
     }
 }
